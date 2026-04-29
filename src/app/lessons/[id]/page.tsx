@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { courses } from "@/data/courses";
+import { LessonQuiz } from "./LessonQuiz";
 
 type LessonPageProps = {
   params: Promise<{
@@ -16,6 +17,8 @@ export default async function LessonPage({ params }: LessonPageProps) {
   if (!course) {
     notFound();
   }
+
+  const firstQuestion = course.questions[0];
 
   return (
     <main className="min-h-screen bg-[#f7fbf7] px-5 py-8 text-slate-950 sm:px-8 lg:px-10">
@@ -47,16 +50,16 @@ export default async function LessonPage({ params }: LessonPageProps) {
               {course.description}
             </p>
 
-            <div className="mt-8 rounded-3xl bg-slate-950 p-6 text-white">
-              <p className="text-sm font-medium text-emerald-200">
+            <div className="mt-8 rounded-3xl bg-emerald-50 p-5 text-base font-semibold text-emerald-900 ring-1 ring-emerald-100">
+              <p className="text-sm font-medium text-emerald-700">
                 菲律宾语示例
               </p>
-              <p className="mt-4 text-3xl font-bold">{course.example}</p>
+              <p className="mt-4 text-3xl font-bold text-slate-950">
+                {course.example}
+              </p>
             </div>
 
-            <div className="mt-6 rounded-3xl bg-emerald-50 p-5 text-base font-semibold text-emerald-900 ring-1 ring-emerald-100">
-              课程练习即将开始
-            </div>
+            <LessonQuiz question={firstQuestion} />
           </article>
         </div>
       </section>
