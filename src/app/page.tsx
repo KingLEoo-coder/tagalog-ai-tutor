@@ -1,25 +1,6 @@
 import type { Metadata } from "next";
 
-const courses = [
-  {
-    name: "问候语",
-    description: "学习基础打招呼、感谢和简单寒暄。",
-    accent: "from-teal-400 to-cyan-500",
-    example: "Kumusta!",
-  },
-  {
-    name: "数字",
-    description: "学习 1-20 的常用数字表达。",
-    accent: "from-amber-400 to-orange-500",
-    example: "Isa, dalawa, tatlo",
-  },
-  {
-    name: "餐厅点餐",
-    description: "学习点餐、询价和表达需求。",
-    accent: "from-rose-400 to-pink-500",
-    example: "Magkano ito?",
-  },
-];
+import { courses } from "@/data/courses";
 
 export const metadata: Metadata = {
   title: "Tagalog AI Tutor",
@@ -111,7 +92,7 @@ export default function Home() {
           <div className="grid gap-4 md:grid-cols-3">
             {courses.map((course) => (
               <article
-                key={course.name}
+                key={course.id}
                 className="group flex min-h-64 flex-col rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 transition duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-100"
               >
                 <div
