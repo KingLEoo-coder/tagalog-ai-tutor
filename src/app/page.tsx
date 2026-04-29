@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { courses } from "@/data/courses";
 
@@ -109,12 +110,12 @@ export default function Home() {
                     {course.description}
                   </p>
                 </div>
-                <button
-                  type="button"
-                  className="mt-8 h-12 rounded-full bg-slate-950 px-5 text-sm font-semibold text-white transition group-hover:bg-emerald-600"
+                <Link
+                  href={`/lessons/${course.id}`}
+                  className="mt-8 flex h-12 items-center justify-center rounded-full bg-slate-950 px-5 text-sm font-semibold text-white transition group-hover:bg-emerald-600"
                 >
                   开始学习
-                </button>
+                </Link>
               </article>
             ))}
           </div>
