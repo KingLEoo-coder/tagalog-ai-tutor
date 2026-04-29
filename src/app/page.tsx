@@ -1,65 +1,144 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+
+const courses = [
+  {
+    name: "问候语",
+    description: "学习基础打招呼、感谢和简单寒暄。",
+    accent: "from-teal-400 to-cyan-500",
+    example: "Kumusta!",
+  },
+  {
+    name: "数字",
+    description: "学习 1-20 的常用数字表达。",
+    accent: "from-amber-400 to-orange-500",
+    example: "Isa, dalawa, tatlo",
+  },
+  {
+    name: "餐厅点餐",
+    description: "学习点餐、询价和表达需求。",
+    accent: "from-rose-400 to-pink-500",
+    example: "Magkano ito?",
+  },
+];
+
+export const metadata: Metadata = {
+  title: "Tagalog AI Tutor",
+  description: "面向中文母语者的菲律宾语学习工具。",
+};
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen bg-[#f7fbf7] text-slate-950">
+      <section className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-5 py-8 sm:px-8 lg:px-10">
+        <nav className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="flex size-11 items-center justify-center rounded-2xl bg-emerald-600 text-lg font-bold text-white shadow-sm shadow-emerald-200">
+              T
+            </div>
+            <span className="text-base font-semibold tracking-wide text-slate-900">
+              Tagalog AI Tutor
+            </span>
+          </div>
+          <span className="rounded-full border border-emerald-200 bg-white px-4 py-2 text-sm font-medium text-emerald-700 shadow-sm">
+            中文友好
+          </span>
+        </nav>
+
+        <div className="grid flex-1 items-center gap-10 py-14 lg:grid-cols-[1.02fr_0.98fr] lg:py-10">
+          <div className="max-w-2xl">
+            <p className="mb-5 inline-flex rounded-full bg-emerald-100 px-4 py-2 text-sm font-semibold text-emerald-800">
+              菲律宾语入门练习
+            </p>
+            <h1 className="text-4xl font-bold leading-tight text-slate-950 sm:text-5xl lg:text-6xl">
+              Tagalog AI Tutor
+            </h1>
+            <p className="mt-5 max-w-xl text-lg leading-8 text-slate-600 sm:text-xl">
+              面向中文母语者的菲律宾语学习工具。
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3 text-sm font-medium text-slate-700">
+              <span className="rounded-full bg-white px-4 py-2 shadow-sm ring-1 ring-slate-200">
+                从高频场景开始
+              </span>
+              <span className="rounded-full bg-white px-4 py-2 shadow-sm ring-1 ring-slate-200">
+                中文解释更直观
+              </span>
+              <span className="rounded-full bg-white px-4 py-2 shadow-sm ring-1 ring-slate-200">
+                适合碎片时间练习
+              </span>
+            </div>
+          </div>
+
+          <div className="rounded-[2rem] bg-white p-5 shadow-xl shadow-emerald-100 ring-1 ring-emerald-100 sm:p-6">
+            <div className="rounded-[1.5rem] bg-slate-950 p-6 text-white">
+              <p className="text-sm font-medium text-emerald-200">
+                今日学习片段
+              </p>
+              <p className="mt-5 text-3xl font-bold">Salamat!</p>
+              <p className="mt-3 text-slate-300">谢谢，用于表达感谢。</p>
+            </div>
+            <div className="mt-4 grid grid-cols-3 gap-3 text-center text-sm font-semibold">
+              <div className="rounded-2xl bg-emerald-50 px-3 py-4 text-emerald-800">
+                听
+              </div>
+              <div className="rounded-2xl bg-cyan-50 px-3 py-4 text-cyan-800">
+                读
+              </div>
+              <div className="rounded-2xl bg-amber-50 px-3 py-4 text-amber-800">
+                说
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+
+        <section aria-labelledby="courses-heading" className="pb-10">
+          <div className="mb-6 flex flex-col justify-between gap-2 sm:flex-row sm:items-end">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wider text-emerald-700">
+                Courses
+              </p>
+              <h2
+                id="courses-heading"
+                className="mt-2 text-2xl font-bold text-slate-950 sm:text-3xl"
+              >
+                选择一个课程开始
+              </h2>
+            </div>
+            <p className="max-w-md text-sm leading-6 text-slate-500">
+              先从真实生活里最常用的表达练起，再逐步扩展到更多场景。
+            </p>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-3">
+            {courses.map((course) => (
+              <article
+                key={course.name}
+                className="group flex min-h-64 flex-col rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 transition duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-100"
+              >
+                <div
+                  className={`mb-6 h-2 w-20 rounded-full bg-gradient-to-r ${course.accent}`}
+                />
+                <div className="flex-1">
+                  <p className="text-sm font-semibold text-slate-400">
+                    {course.example}
+                  </p>
+                  <h3 className="mt-3 text-2xl font-bold text-slate-950">
+                    {course.name}
+                  </h3>
+                  <p className="mt-3 text-base leading-7 text-slate-600">
+                    {course.description}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  className="mt-8 h-12 rounded-full bg-slate-950 px-5 text-sm font-semibold text-white transition group-hover:bg-emerald-600"
+                >
+                  开始学习
+                </button>
+              </article>
+            ))}
+          </div>
+        </section>
+      </section>
+    </main>
   );
 }
