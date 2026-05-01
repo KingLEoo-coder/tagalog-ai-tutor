@@ -18,8 +18,6 @@ export default async function LessonPage({ params }: LessonPageProps) {
     notFound();
   }
 
-  const firstQuestion = course.questions[0];
-
   return (
     <main className="min-h-screen bg-[#f7fbf7] px-5 py-8 text-slate-950 sm:px-8 lg:px-10">
       <section className="mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-4xl flex-col">
@@ -59,7 +57,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
               </p>
             </div>
 
-            <LessonQuiz question={firstQuestion} />
+            <LessonQuiz questions={course.questions} />
           </article>
         </div>
       </section>
