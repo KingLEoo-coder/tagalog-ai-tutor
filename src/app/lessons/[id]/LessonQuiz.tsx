@@ -20,11 +20,24 @@ export function LessonQuiz({ questions }: LessonQuizProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isCompleted, setIsCompleted] = useState(false);
+  const [score, setScore] = useState(0);
 
   const question = questions[currentQuestionIndex];
   const isAnswered = selectedOption !== null;
   const isCorrect = selectedOption === question.answer;
   const isLastQuestion = currentQuestionIndex === questions.length - 1;
+
+  function handleSelectOption(option: string) {
+    if (selectedOption !== null) {
+      return;
+    }
+
+    setSelectedOption(option);
+
+    if (option === question.answer) {
+      setScore((currentScore) => currentScore + 1);
+    }
+  }
 
   function handleNextQuestion() {
     if (isLastQuestion) {
@@ -44,6 +57,9 @@ export function LessonQuiz({ questions }: LessonQuizProps) {
         <p className="mt-4 text-base leading-7 text-slate-300">
           你已经完成本课程的所有题目
         </p>
+        <p className="mt-4 inline-flex rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-emerald-200">
+          你的得分：{score} / {questions.length}
+        </p>
         <Link
           href="/"
           className="mt-6 inline-flex h-12 items-center justify-center rounded-full bg-emerald-400 px-5 text-sm font-semibold text-slate-950 transition hover:bg-emerald-300"
@@ -58,9 +74,14 @@ export function LessonQuiz({ questions }: LessonQuizProps) {
     <section className="mt-8 rounded-3xl bg-slate-950 p-6 text-white">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm font-medium text-emerald-200">当前题目</p>
-        <p className="text-sm font-semibold text-slate-400">
-          {currentQuestionIndex + 1} / {questions.length}
-        </p>
+        <div className="flex flex-wrap gap-2 text-sm font-semibold">
+          <p className="rounded-full bg-white/10 px-3 py-1 text-slate-300">
+            {currentQuestionIndex + 1} / {questions.length}
+          </p>
+          <p className="rounded-full bg-emerald-400/15 px-3 py-1 text-emerald-200">
+            得分 {score} / {questions.length}
+          </p>
+        </div>
       </div>
       <p className="mt-4 text-3xl font-bold">{question.prompt}</p>
       <p className="mt-4 text-base leading-7 text-slate-300">
@@ -75,11 +96,12 @@ export function LessonQuiz({ questions }: LessonQuizProps) {
             <button
               key={option}
               type="button"
-              onClick={() => setSelectedOption(option)}
+              onClick={() => handleSelectOption(option)}
+              disabled={isAnswered}
               className={`min-h-12 rounded-2xl px-4 py-3 text-sm font-semibold transition ${
                 isSelected
                   ? "bg-emerald-400 text-slate-950"
-                  : "bg-white/10 text-white hover:bg-white/20"
+                  : "bg-white/10 text-white hover:bg-white/20 disabled:hover:bg-white/10"
               }`}
             >
               {option}
